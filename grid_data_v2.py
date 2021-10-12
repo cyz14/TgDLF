@@ -88,9 +88,9 @@ data_list = ['CY','HD','FT','SJS','PG','YZ','CP',
          'MTG','FS','DX','HR','MY','SY','YQ'] # 缺少net 缺少PG，PG天气数据从2010年6月开始，缺失过多
 for i in range (14):
     if use_ratio == True:
-        name = 'E:/CYQ/LSTM-ENN/Grid_ratio_correctdata_correctweather/data/data_day_'+ data_list[i] +'.csv'
+        name = config.data_path + '/data_day_'+ data_list[i] +'.csv'
     else:
-        name = 'E:/CYQ/LSTM-ENN/Grid_ratio_correctdata_correctweather/data/real_data_day_'+ data_list[i] +'.csv'
+        name = config.data_path + '/real_data_day_'+ data_list[i] +'.csv'
     #name = 'E:/Research CYT/grid/enlstm_code/ratio/data/data_day_'+ data_list[i] +'.csv'
     script = 'df = pd.read_csv(\'{0}\')'.format(name)
     script2 = 'data_origin.append(df)'

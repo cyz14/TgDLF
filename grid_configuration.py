@@ -69,6 +69,7 @@ class DefaultConfiguration:
         self.train_ID = b[self.test_set_ID]
         #self.test_ID = np.array(self.rdn_lst[0:self.test_well_num])  # 一个list包含所有test数据
         #self.train_ID = np.array(self.rdn_lst[self.test_well_num:self.total_well_num])
+        self.data_path = '/workspace/TgDLF/data/load_ratio_data'
         self.data_list = ['CY', 'HD', 'FT', 'SJS', 'PG', 'YZ', 'CP',
                           'MTG', 'FS', 'DX', 'HR', 'MY', 'SY', 'YQ']
         #self.test_ID = [9, 5, 12, 2]
