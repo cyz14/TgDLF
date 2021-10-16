@@ -1,18 +1,23 @@
-from enn import *
+import os
+import pickle
+import time
+
+import matplotlib.pyplot as plt
 import numpy as np
-from grid_LSTM import netLSTM, netLSTM_full
-from grid_data_v2 import TextDataset
-import grid_data_v2 as grid_data
-from grid_configuration import config
-from util import Record, save_var, get_file_list, Regeneralize, list_to_csv
+import pandas as pd
+import torch
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
-import torch
-import time
-import matplotlib.pyplot as plt
-import pickle
-import pandas as pd
-import os
+
+import tgdlf.grid_data_v2 as grid_data
+from enn import enn
+from enn import lamuda
+from tgdlf.grid_configuration import config
+from tgdlf.grid_data_v2 import TextDataset
+from tgdlf.grid_LSTM import netLSTM, netLSTM_full
+from tgdlf.util import (Record, Regeneralize, get_file_list, list_to_csv,
+                        save_var)
+
 plt.ion()
 
 seed = config.seed
