@@ -1,11 +1,9 @@
 FROM python:3.10-slim
 WORKDIR /tgdlf
-COPY enn /tgdlf
-COPY grid_configuration.py /tgdlf
-COPY grid_data_v2.py /tgdlf
-COPY grid_LSTM.py /tgdlf
-COPY train_decay_loss.py /tgdlf
-COPY util.py /tgdlf
-COPY requirements.txt /tgdlf
-RUN pip install -r requirements.txt
+COPY . .
+RUN pip config set global.index-url http://mirrors.aliyun.com/pypi/simple \
+    && pip config set install.trusted-host mirrors.aliyun.com \
+    && pip install --disable-pip-version-check -r requirements.txt \
+    && cd /tgdlf/enn && python setup.py install \
+    && cd /tgdlf && python setup.py install
 CMD /bin/bash

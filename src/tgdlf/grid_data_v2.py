@@ -6,7 +6,7 @@ Created on Fri Feb  8 22:10:13 2019
 """
 
 import numpy as np
-from grid_configuration import config
+from .grid_configuration import config
 import torch.utils.data
 import torch
 import pandas as pd

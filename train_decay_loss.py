@@ -353,8 +353,8 @@ def run():
             if not os.path.exists(save_dir):
                 os.mkdir(save_dir)
             save_data = {}
-            save_data['pred'] = np.array(pred_data.mean(0)[:, 0])
-            save_data['target'] = np.array(np.array(target[:, 0]))
+            save_data['pred'] = np.array(pred_data.mean(0)[:, 0].cpu())
+            save_data['target'] = np.array(np.array(target[:, 0].cpu()))
             save_data = pd.DataFrame.from_dict(save_data)
             save_filename = '{}_{}.csv'.format(epoch, i)
             save_data.to_csv(os.path.join(save_dir, save_filename))

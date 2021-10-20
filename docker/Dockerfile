@@ -1,11 +1,13 @@
 FROM pytorch/pytorch:1.9.0-cuda11.1-cudnn8-runtime
 WORKDIR /tgdlf
-COPY enn /tgdlf/enn
-COPY grid_configuration.py /tgdlf
-COPY grid_data_v2.py /tgdlf
-COPY grid_LSTM.py /tgdlf
-COPY train_decay_loss.py /tgdlf
-COPY util.py /tgdlf
-COPY requirements.txt /tgdlf
-RUN pip install -r requirements.txt && python /tgdlf/enn/setup.py install
+COPY . .
+RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
+    sed -i s@/security.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
+    apt update && \
+    apt install -y vim
+RUN pip config set global.index-url http://mirrors.aliyun.com/pypi/simple \
+    && pip config set install.trusted-host mirrors.aliyun.com \
+    && pip install --disable-pip-version-check -r requirements.txt \
+    && cd /tgdlf/enn && python setup.py install \
+    && cd /tgdlf && python setup.py install
 CMD /bin/bash

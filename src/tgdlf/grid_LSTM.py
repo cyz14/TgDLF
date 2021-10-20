@@ -8,7 +8,7 @@ Created on Thu May 24 21:34:10 2018
 import torch as t
 import torch.nn as nn
 from torch.autograd import Variable
-from grid_configuration import config
+from .grid_configuration import config
 import torch.nn.functional as F  
 
 

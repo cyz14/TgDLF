@@ -1,1 +1,4 @@
 minio
+matplotlib
+pandas
+scipy
